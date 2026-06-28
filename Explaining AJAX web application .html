@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AJAX Demo</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+body{
+    font-family:Arial;
+    margin:40px;
+}
+button{
+    padding:10px 20px;
+}
+#result{
+    margin-top:20px;
+    padding:15px;
+    border:1px solid gray;
+    width:300px;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+
+    $("#load").click(function(){
+
+        $.ajax({
+            url:"message.txt",
+            success:function(data){
+                $("#result").html(data);
+            },
+            error:function(){
+                $("#result").html("Unable to load the file.");
+            }
+        });
+
+    });
+
+});
+</script>
+
+</head>
+
+<body>
+
+<h2>AJAX Demonstration</h2>
+
+<p>
+This application demonstrates AJAX by loading data from an external text file
+without refreshing the webpage.
+When the button is clicked, jQuery sends an asynchronous request to the server
+and displays the returned content inside the page.
+</p>
+
+<button id="load">
+Load Message
+</button>
+
+<div id="result">
+Content will appear here.
+</div>
+
+</body>
+</html>
